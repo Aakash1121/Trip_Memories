@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "396430453998",
+    "project_id": "tripmemories-ac9c8",
+    "storage_bucket": "tripmemories-ac9c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396430453998:android:d96cf9f32006dbca94d7ff",
+        "android_client_info": {
+          "package_name": "com.example.tripmemories"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396430453998-c3dgdo1mvtfg0203l1qdca2pfvpj166m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tripmemories",
+            "certificate_hash": "a7c70700acb0d1cbee640d2e7688a601e67694fa"
+          }
+        },
+        {
+          "client_id": "396430453998-j990rtj2kpt90gqqcotgl82u6qrgdm6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4vruJnU_kdacGwFWcsf8465kRdBL8RlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396430453998-j990rtj2kpt90gqqcotgl82u6qrgdm6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
