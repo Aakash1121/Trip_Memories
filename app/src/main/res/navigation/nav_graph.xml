@@ -4,21 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
-
-    <fragment
-        android:id="@+id/credentialsFragment"
-        android:name="com.example.tripmemories.fragment.CredentialsFragment"
-        android:label="Credentials"
-        tools:layout="@layout/fragment_credentials" >
-        <action
-            android:id="@+id/action_credentialsFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
-    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.tripmemories.fragment.SplashFragment"
-        android:label="Splash Screen"
-        tools:layout="@layout/fragment_splash" >
+        android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
@@ -26,14 +15,48 @@
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.example.tripmemories.fragment.AboutUsFragment"
-        android:label="About Us"
-        tools:layout="@layout/fragment_about_us" >
+        android:label="AboutUsFragment" >
         <action
             android:id="@+id/action_aboutUsFragment_to_credentialsFragment"
             app:destination="@id/credentialsFragment" />
     </fragment>
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="com.example.tripmemories.activity.HomeActivity"
-        android:label="HomeActivity" />
+    <fragment
+        android:id="@+id/credentialsFragment"
+        android:name="com.example.tripmemories.fragment.CredentialsFragment"
+        android:label="CredentialsFragment" >
+        <action
+            android:id="@+id/action_credentialsFragment_to_userTripsFragment"
+            app:destination="@id/userTripsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTripFragment"
+        android:name="com.example.tripmemories.fragment.AddTripFragment"
+        android:label="AddTripFragment" />
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="com.example.tripmemories.fragment.TripFragment"
+        android:label="TripFragment" />
+    <fragment
+        android:id="@+id/usersSettingsFragment"
+        android:name="com.example.tripmemories.fragment.UsersSettingsFragment"
+        android:label="UsersSettingsFragment" >
+        <action
+            android:id="@+id/action_usersSettingsFragment_to_appearanceFragment"
+            app:destination="@id/appearanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userTripsFragment"
+        android:name="com.example.tripmemories.fragment.UserTripsFragment"
+        android:label="UserTripsFragment" >
+        <action
+            android:id="@+id/action_userTripsFragment_to_addTripFragment"
+            app:destination="@id/addTripFragment" />
+        <action
+            android:id="@+id/action_userTripsFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appearanceFragment"
+        android:name="com.example.tripmemories.fragment.AppearanceFragment"
+        android:label="AppearanceFragment" />
 </navigation>

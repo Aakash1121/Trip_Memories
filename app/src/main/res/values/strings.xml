@@ -122,5 +122,7 @@
     <string name="trip_desc">Description</string>
     <string name="trip_date">Date</string>
     <string name="trip_add_people">Add People</string>
+    <string name="sign_in_password_hint">Password</string>
+    <string name="sign_in_emailId_hint">Email Id</string>
 
 </resources>

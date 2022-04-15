@@ -4,41 +4,43 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tripmemories.R
+import com.example.tripmemories.databinding.FragmentCredentialsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_credentials.view.*
 
 
-class CredentialsFragment : Fragment() {
+class CredentialsFragment : BaseFragment() {
+    private lateinit var binding:FragmentCredentialsBinding
+    override var bottomNavigationViewVisibility=View.GONE
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_credentials, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_credentials, container, false)
 
-        tabConfig(view)
-        return view
+        tabConfig()
+        return binding.root
     }
 
 
 
-    private fun tabConfig(view: View) {
-        view.viewPagerFrame.adapter =
+    private fun tabConfig() {
+        binding.viewPagerFrame.adapter =
             CredentialsPagerAdapter(activity) //Attach the adapter with our ViewPagerAdapter passing the host activity
-
-
-        val tabLayout: TabLayout = view.findViewById(R.id.tabs)
         TabLayoutMediator(
-            tabLayout, view.viewPagerFrame
+            binding.tabs, binding.viewPagerFrame
         ) { tab, position ->
             tab.text =
-                (view.viewPagerFrame.adapter as CredentialsPagerAdapter).mFragmentNames[position] //Sets tabs names as mentioned in ViewPagerAdapter fragmentNames array, this can be implemented in many different ways.
+                (binding.viewPagerFrame.adapter as CredentialsPagerAdapter).mFragmentNames[position] //Sets tabs names as mentioned in ViewPagerAdapter fragmentNames array, this can be implemented in many different ways.
         }.attach()
     }
 

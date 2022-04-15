@@ -6,6 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_main_background"
         tools:context=".fragment.TripFragment">
 
 
@@ -26,8 +27,9 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="Title"
+            android:textColor="@color/color_main_text"
+            android:fontFamily="@font/roboto"
             android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/txtTripFragDate"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +43,9 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="Date"
+            android:textColor="@color/color_main_text"
+            android:fontFamily="@font/roboto"
             android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtTripFragTitle"
             app:layout_constraintTop_toBottomOf="@id/tripFragImgVIew" />
@@ -54,6 +57,8 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="Description"
+            android:textColor="@color/color_main_text"
+            android:fontFamily="@font/roboto"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +73,8 @@
             android:padding="10dp"
             android:text="People"
             android:textSize="16sp"
+            android:textColor="@color/color_main_text"
+            android:fontFamily="@font/roboto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTripFragDescription" />

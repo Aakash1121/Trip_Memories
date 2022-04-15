@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/color_main_background"
         tools:context=".fragment.AddTripFragment">
 
         <androidx.core.widget.NestedScrollView
@@ -29,7 +29,7 @@
                     android:layout_marginTop="@dimen/my_profile_screen_content_marginTopBottom"
                     android:layout_marginEnd="@dimen/my_profile_screen_content_marginStartEnd"
                     android:layout_marginBottom="@dimen/my_profile_screen_content_marginTopBottom"
-                    android:backgroundTint="@color/secondary_color"
+                    android:backgroundTint="@color/color_main_background"
                     android:elevation="@dimen/card_view_elevation"
                     app:cardCornerRadius="@dimen/card_view_corner_radius">
 
@@ -66,7 +66,9 @@
                                 android:id="@+id/edtTripTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
                                 android:maxLength="20"
+                                android:textColor="@color/color_main_text"
                                 android:textSize="@dimen/et_text_size" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -90,6 +92,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:maxLength="150"
+                                android:textColor="@color/color_main_text"
+                                android:fontFamily="@font/roboto"
                                 android:textSize="@dimen/et_text_size" />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -120,6 +124,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/my_profile_name_til_marginTop"
                             android:hint="@string/trip_add_people"
+                            android:textColor="@color/color_main_text"
+                            android:fontFamily="@font/roboto"
                             app:endIconMode="clear_text"
                             app:helperText="Required*"
                             app:helperTextTextColor="@color/red"
@@ -139,6 +145,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/my_profile_btn_update_marginTop"
+
+                            android:fontFamily="@font/roboto_bold"
                             android:layout_marginBottom="@dimen/my_profile_btn_update_marginTop"
                             android:background="@drawable/btn_add_trip_bkgnd"
                             android:foreground="?attr/selectableItemBackground"
@@ -146,7 +154,7 @@
                             android:paddingTop="@dimen/btn_paddingTopBottom"
                             android:paddingBottom="@dimen/btn_paddingTopBottom"
                             android:text="@string/add_trip"
-                            android:textColor="@color/secondary_color"
+                            android:textColor="@color/color_main_background"
                             android:textSize="@dimen/btn_text_size" />
 
                     </LinearLayout>
