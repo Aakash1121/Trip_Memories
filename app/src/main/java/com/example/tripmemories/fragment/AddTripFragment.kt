@@ -53,7 +53,7 @@ class AddTripFragment : Fragment(){
 
             val signedInUserId = Firebase.auth.currentUser?.uid
             if (signedInUserId != null) {
-                userController.createTrip(this, signedInUserId, tripData.tripTitle, tripData,it)
+                userController.createTrip(this, signedInUserId, tripData.tripTitle, tripData)
             }
         }
 
@@ -86,11 +86,9 @@ class AddTripFragment : Fragment(){
         binding.edtTripDate.setText(sdf.format(myCalender.time))
     }
 
-    fun tripCreatedSuccessFully(tripTitle: String,view:View) {
+    fun tripCreatedSuccessFully(tripTitle: String) {
         Snackbar.make(requireView(), "$tripTitle Added", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
-//        val mainNavController = Navigation.findNavController(requireActivity(), R.id.navHost)
-//        mainNavController.navigate(R.id.action_addTripFragment_to_homeFragment)
     }
 
 //    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

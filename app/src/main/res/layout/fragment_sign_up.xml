@@ -3,39 +3,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/secondary_color"
-        android:orientation="vertical"
-        android:padding="10dp"
-        tools:context=".fragment.SignUpFragment">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="Sign Up"
-            android:textColor="@color/primary_color"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@color/color_main_background"
+            android:orientation="vertical"
+            android:padding="10dp"
+            tools:context=".fragment.SignUpFragment">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Sign Up"
+                android:textColor="@color/color_main_text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/signUpFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_color"
+            android:backgroundTint="@color/color_alt_text"
             android:hint="Enter FirstName"
             android:imeOptions="actionNext"
-            android:textColor="@color/black"
+            android:fontFamily="@font/roboto"
             android:textSize="16sp"
+            android:textColor="@color/color_main_text"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,44 +55,49 @@
             android:id="@+id/signUpLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_color"
+            android:backgroundTint="@color/color_alt_text"
             android:hint="Enter LastName"
             android:imeOptions="actionNext"
-            android:textColor="@color/black"
+            android:fontFamily="@font/roboto"
             android:textSize="16sp"
+            android:textColor="@color/color_main_text"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signUpFirstName" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/signUpEmailId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_color"
-            android:hint="Enter Email Id"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/signUpEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/color_alt_text"
+
+                android:fontFamily="@font/roboto"
+                android:hint="Enter Email Id"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signUpLastName"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/signUpPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_color"
-            android:hint="Enter password"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/signUpPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/color_alt_text"
+
+                android:fontFamily="@font/roboto"
+                android:hint="Enter password"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signUpEmailId"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -92,8 +107,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_sign_in_bkgnd"
             android:text="Sign Up"
-            android:textColor="@color/secondary_color"
+            android:fontFamily="@font/roboto"
             android:textStyle="bold"
+            android:textColor="@color/color_main_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signUpPassword"/>
@@ -105,9 +121,10 @@
             android:gravity="center"
             android:padding="20dp"
             android:text="OR"
-            android:textColor="@color/primary_color"
+            android:fontFamily="@font/roboto"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/color_alt_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnSignUp"/>
@@ -117,7 +134,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_sign_in_bkgnd"
             android:text="Sign Up with google"
-            android:textColor="@color/secondary_color"
+            android:textColor="@color/color_main_background"
+            android:fontFamily="@font/roboto"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +144,6 @@
             app:layout_constraintTop_toBottomOf="@id/txtORSignUp"
             app:layout_constraintVertical_bias="0.0" />
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

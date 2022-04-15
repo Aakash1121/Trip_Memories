@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/color_main_background"
     android:layout_margin="10dp"
     android:orientation="vertical"
     app:cardCornerRadius="10dp"
@@ -19,8 +20,9 @@
                 android:id="@+id/txtTripTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/color_main_text"
                 android:textSize="20sp"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Title"
                 android:textStyle="bold" />
 
@@ -29,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="@color/black"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/color_alt_text"
                 android:textSize="16sp" />
 
         </LinearLayout>

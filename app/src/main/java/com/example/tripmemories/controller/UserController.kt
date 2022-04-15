@@ -37,7 +37,7 @@ class UserController {
             }
     }
 
-    fun createTrip(fragment: Fragment, userId: String, tripTitle: String, tripData: TripData,view: View) {
+    fun createTrip(fragment: Fragment, userId: String, tripTitle: String, tripData: TripData) {
         db.collection("USERS").document(userId)
             .collection("TRIPS").document(tripTitle).set(tripData, SetOptions.merge())
             .addOnCompleteListener {
@@ -45,7 +45,7 @@ class UserController {
             }
         when (fragment) {
             is AddTripFragment -> {
-                fragment.tripCreatedSuccessFully(tripData.tripTitle,view)
+                fragment.tripCreatedSuccessFully(tripData.tripTitle)
             }
         }
     }

@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.tripmemories.R
 import com.example.tripmemories.controller.UserController
 import com.example.tripmemories.databinding.FragmentUserSettingsBinding
@@ -17,8 +19,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_user_settings.view.*
 
-class UsersSettingsFragment : Fragment() {
-
+class UsersSettingsFragment : BaseFragment() {
+    override var bottomNavigationViewVisibility=View.VISIBLE
     lateinit var binding: FragmentUserSettingsBinding
 
     private val userController = UserController()
@@ -33,6 +35,10 @@ class UsersSettingsFragment : Fragment() {
         Log.i("USER", "USER ID->${signedInUserId}")
         if (signedInUserId != null) {
             userController.userDocument(this, signedInUserId)
+        }
+        binding.btnSettingsAppearance.setOnClickListener {
+            it.findNavController().navigate(R.id.action_usersSettingsFragment_to_appearanceFragment)
+            Toast.makeText(context, "Appearance", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root

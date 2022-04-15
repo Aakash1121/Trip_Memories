@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -48,11 +49,8 @@ class SignInFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.i("USER", "signInWithEmail:success")
-                    val mainNavController = Navigation.findNavController(requireActivity(), R.id.navHost)
-                    mainNavController.navigate(R.id.action_credentialsFragment_to_homeActivity)
+                   view.findNavController().navigate(R.id.action_credentialsFragment_to_userTripsFragment)
 
-//                    binding.root.findNavController()
-//                        .navigate(R.id.action_credentialsFragment_to_homeFragment, bundle)
                 } else {
                     Log.i("TAG", "signIn:Failed")
                 }

@@ -11,11 +11,11 @@ import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentAboutUsBinding
 
 
-class AboutUsFragment : Fragment() {
+class AboutUsFragment : BaseFragment() {
 
     lateinit var binding: FragmentAboutUsBinding
 
-
+    override var bottomNavigationViewVisibility=View.GONE
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

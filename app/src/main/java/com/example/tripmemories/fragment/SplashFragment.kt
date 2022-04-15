@@ -11,8 +11,9 @@ import com.example.tripmemories.R
 import androidx.navigation.fragment.findNavController
 
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
 
+    override var bottomNavigationViewVisibility=View.GONE
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
