@@ -79,6 +79,8 @@
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/home_bottom_menu.xml" value="0.25" />
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/home_menu.xml" value="0.25" />
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/source.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/dialog_progress.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
       </map>
     </option>
   </component>
