@@ -5,24 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.example.tripmemories.R
 import com.example.tripmemories.controller.UserController
+import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.databinding.FragmentAddTripBinding
 import com.example.tripmemories.model.TripData
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class AddTripFragment : Fragment(){
     lateinit var binding: FragmentAddTripBinding
-    private val userController = UserController()
+    @Inject
+    lateinit var userController : UserController
 
     var day = 0
     var month = 0

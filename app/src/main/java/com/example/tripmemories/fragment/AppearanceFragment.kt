@@ -11,8 +11,10 @@ import androidx.databinding.DataBindingUtil
 import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentAboutUsBinding
 import com.example.tripmemories.databinding.FragmentAppearanceBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_appearance.*
 
+@AndroidEntryPoint
 class AppearanceFragment : Fragment() {
 
     lateinit var binding: FragmentAppearanceBinding

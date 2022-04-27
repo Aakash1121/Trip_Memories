@@ -14,18 +14,20 @@ import com.example.tripmemories.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
     lateinit var binding: FragmentSignInBinding
-    private lateinit var auth: FirebaseAuth
-    //  private val mFireStore = FirebaseFirestore.getInstance()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        auth = Firebase.auth
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_in, container, false)
 
         return binding.root

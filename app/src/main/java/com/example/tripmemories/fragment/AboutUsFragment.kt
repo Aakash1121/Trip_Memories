@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentAboutUsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AboutUsFragment : BaseFragment() {
 
     lateinit var binding: FragmentAboutUsBinding
