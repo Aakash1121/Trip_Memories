@@ -31,7 +31,7 @@ class UserTripsFragment : BaseFragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_trips, container, false)
 
-
+        showProgressDialog(resources.getString(R.string.please_wait))
 
         return binding.root
     }
@@ -51,6 +51,7 @@ class UserTripsFragment : BaseFragment() {
     }
 
     fun tripList(tripList:ArrayList<TripData>){
+        hideProgressDialog()
         binding.rvUserTrips.layoutManager=LinearLayoutManager(activity)
         binding.rvUserTrips.adapter=UserTripsAdapter(requireActivity(),tripList)
     }
