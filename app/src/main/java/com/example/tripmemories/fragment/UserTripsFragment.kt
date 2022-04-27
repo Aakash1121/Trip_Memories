@@ -12,17 +12,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripmemories.R
 import com.example.tripmemories.adapter.UserTripsAdapter
 import com.example.tripmemories.controller.UserController
+import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.databinding.FragmentUserTripsBinding
 import com.example.tripmemories.model.TripData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class UserTripsFragment : BaseFragment() {
     override var bottomNavigationViewVisibility=View.VISIBLE
 
     lateinit var binding: FragmentUserTripsBinding
-    private val userController = UserController()
+
+    @Inject
+    lateinit var userController :UserController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

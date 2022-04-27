@@ -12,28 +12,29 @@ import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentSignUpBinding
 import com.example.tripmemories.model.UserData
 import com.google.android.material.snackbar.Snackbar
-
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
-   // private val mFireStore = FirebaseFirestore.getInstance()
+    // private val mFireStore = FirebaseFirestore.getInstance()
     lateinit var binding: FragmentSignUpBinding
     private val db = Firebase.firestore
-    private lateinit var auth: FirebaseAuth
+
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        auth = Firebase.auth
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false)
         binding.btnSignUp.setOnClickListener {
             registerUser(

@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.tripmemories.R
 
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SplashFragment : BaseFragment() {
 
     override var bottomNavigationViewVisibility=View.GONE

@@ -6,8 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.tripmemories.R
 import com.example.tripmemories.activity.TripMemoriesActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.dialog_progress.*
-
+@AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
     private var doubleBackToExitPressedOnce = false

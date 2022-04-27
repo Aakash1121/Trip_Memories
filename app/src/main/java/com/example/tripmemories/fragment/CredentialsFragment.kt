@@ -13,9 +13,10 @@ import com.example.tripmemories.R
 import com.example.tripmemories.databinding.FragmentCredentialsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_credentials.view.*
 
-
+@AndroidEntryPoint
 class CredentialsFragment : BaseFragment() {
     private lateinit var binding:FragmentCredentialsBinding
     override var bottomNavigationViewVisibility=View.GONE
