@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/addTripListPhotosFragment">
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.tripmemories.fragment.SplashFragment"
@@ -31,7 +31,11 @@
     <fragment
         android:id="@+id/addTripFragment"
         android:name="com.example.tripmemories.fragment.AddTripFragment"
-        android:label="AddTripFragment" />
+        android:label="AddTripFragment" >
+        <action
+            android:id="@+id/action_addTripFragment_to_addTripListPhotosFragment"
+            app:destination="@id/addTripListPhotosFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tripFragment"
         android:name="com.example.tripmemories.fragment.TripFragment"
@@ -59,4 +63,8 @@
         android:id="@+id/appearanceFragment"
         android:name="com.example.tripmemories.fragment.AppearanceFragment"
         android:label="AppearanceFragment" />
+    <fragment
+        android:id="@+id/addTripListPhotosFragment"
+        android:name="com.example.tripmemories.fragment.AddTripListPhotosFragment"
+        android:label="AddTripListPhotosFragment" />
 </navigation>

@@ -1,15 +1,16 @@
 package com.example.tripmemories.fragment
 
 import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.tripmemories.R
 import com.example.tripmemories.controller.UserController
-import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.databinding.FragmentAddTripBinding
 import com.example.tripmemories.model.TripData
 import com.google.android.material.snackbar.Snackbar
@@ -21,18 +22,11 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AddTripFragment : Fragment(){
+class AddTripFragment : Fragment() {
     lateinit var binding: FragmentAddTripBinding
+
     @Inject
-    lateinit var userController : UserController
-
-    var day = 0
-    var month = 0
-    var year = 0
-
-    var savedDay = 0
-    var savedMonth = 0
-    var savedYear = 0
+    lateinit var userController: UserController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,9 +36,17 @@ class AddTripFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_trip, container, false)
         datePickerForTrip()
         createTrip()
+        addPhotos()
         return binding.root
     }
-    fun createTrip() {
+
+    private fun addPhotos() {
+        binding.btnAddTripPhotos.setOnClickListener {
+            it.findNavController().navigate(R.id.action_addTripFragment_to_addTripListPhotosFragment)
+        }
+    }
+
+    private fun createTrip() {
         binding.btnAddTrip.setOnClickListener {
             val tripData = TripData()
 //            tripData.tripPhotosURI=binding.imgTripPhotos.text.toString()
@@ -61,7 +63,7 @@ class AddTripFragment : Fragment(){
 
     }
 
-    private fun datePickerForTrip(){
+    private fun datePickerForTrip() {
         val myCalendar = Calendar.getInstance()
 
         val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
@@ -93,30 +95,4 @@ class AddTripFragment : Fragment(){
             .setAction("Action", null).show()
     }
 
-//    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-//        savedDay=dayOfMonth
-//        savedMonth=month
-//        savedYear=year
-//
-//    }
-//
-//    fun pickDate() {
-//        val cal = Calendar.getInstance()
-//        day = cal.get(Calendar.DAY_OF_MONTH)
-//        month = cal.get(Calendar.MONTH)
-//        year = cal.get(Calendar.YEAR)
-//
-//        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-//            cal.set(Calendar.YEAR, year)
-//            cal.set(Calendar.MONTH, month)
-//            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-//            binding.edtTripDate.setText( SimpleDateFormat("dd-mm-yyyy", Locale.UK).format(cal.time))
-//        }
-//
-//        binding.txtDateInputLayout.setEndIconOnClickListener {
-//
-//            DatePickerDialog(requireContext(), datePicker, year, month, day).show()
-//        }
-//
-//    }
 }
