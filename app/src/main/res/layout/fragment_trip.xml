@@ -3,81 +3,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_main_background"
-        tools:context=".fragment.TripFragment">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/tripFragImgVIew"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@color/color_main_background"
+            tools:context=".fragment.TripFragment">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtTripFragTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:text="Title"
-            android:textColor="@color/color_main_text"
-            android:fontFamily="@font/roboto"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@id/txtTripFragDate"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tripFragImgVIew" />
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/my_profile_screen_content_padding"
+                app:layout_constraintBottom_toTopOf="@id/txtTripFragTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTripPhotosList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTripFragTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto"
+                android:padding="10dp"
+                android:text="Title"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/txtTripFragDate"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTripFragDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto"
+                android:padding="10dp"
+                android:text="Date"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtTripFragTitle"
+                app:layout_constraintTop_toBottomOf="@id/ll" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTripFragDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto"
+                android:padding="10dp"
+                android:text="Description"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTripFragTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTripFragPeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/roboto"
+                android:padding="10dp"
+                android:text="People"
+                android:textColor="@color/color_main_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTripFragDescription" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtTripFragDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:text="Date"
-            android:textColor="@color/color_main_text"
-            android:fontFamily="@font/roboto"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/txtTripFragTitle"
-            app:layout_constraintTop_toBottomOf="@id/tripFragImgVIew" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtTripFragDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:text="Description"
-            android:textColor="@color/color_main_text"
-            android:fontFamily="@font/roboto"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTripFragTitle" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtTripFragPeople"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:text="People"
-            android:textSize="16sp"
-            android:textColor="@color/color_main_text"
-            android:fontFamily="@font/roboto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTripFragDescription" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

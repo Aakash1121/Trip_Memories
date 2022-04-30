@@ -33,12 +33,15 @@ class UserTripsAdapter(
         holder.item.txtTripTitle.text = tripsList[position].tripTitle
         holder.item.txtTripDesc.text = tripsList[position].tripDescription
 
+
         holder.item.adapterLLTop.setOnClickListener {
 
             val bundle: Bundle = bundleOf(
+                "trip_images" to tripsList[position].tripPhotosURI,
                 "trip_title" to tripsList[position].tripTitle,
                 "trip_desc" to tripsList[position].tripDescription,
-                "trip_people" to tripsList[position].tripPeople
+                "trip_people" to tripsList[position].tripPeople,
+                "trip_data" to tripsList[position].tripDate
             )
 
             holder.item.findNavController().navigate(

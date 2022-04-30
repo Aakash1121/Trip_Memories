@@ -3,13 +3,16 @@ package com.example.tripmemories.fragment
 import android.app.DatePickerDialog
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripmemories.R
+import com.example.tripmemories.adapter.AddTripsAddPhotosAdapter
+import com.example.tripmemories.contracts.AddTripAddPhotosResultContract
 import com.example.tripmemories.controller.UserController
 import com.example.tripmemories.databinding.FragmentAddTripBinding
 import com.example.tripmemories.model.TripData
@@ -28,6 +31,19 @@ class AddTripFragment : Fragment() {
     @Inject
     lateinit var userController: UserController
 
+    var imagesList = ArrayList<Uri>()
+    var contract = registerForActivityResult(AddTripAddPhotosResultContract()) {
+
+        val count = it.size - 1
+        for (i in 0..count) {
+            imagesList.add(it[i])
+        }
+        binding.rvAddPhotosList.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvAddPhotosList.adapter = AddTripsAddPhotosAdapter(requireActivity(), imagesList)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,19 +53,24 @@ class AddTripFragment : Fragment() {
         datePickerForTrip()
         createTrip()
         addPhotos()
+        Log.i("DATA", "in onCreate view")
         return binding.root
     }
 
     private fun addPhotos() {
         binding.btnAddTripPhotos.setOnClickListener {
-            it.findNavController().navigate(R.id.action_addTripFragment_to_addTripListPhotosFragment)
+            contract.launch("Choose")
         }
     }
 
     private fun createTrip() {
         binding.btnAddTrip.setOnClickListener {
             val tripData = TripData()
-//            tripData.tripPhotosURI=binding.imgTripPhotos.text.toString()
+            val count = imagesList.size - 1
+            for (i in 0..count) {
+                tripData.tripPhotosURI.add(imagesList[i].toString())
+                Log.i("data", "createtrip->${imagesList[i].toString()}")
+            }
             tripData.tripTitle = binding.edtTripTitle.text.toString()
             tripData.tripDescription = binding.edtTripDesc.text.toString()
             tripData.tripDate = binding.edtTripDate.text.toString()
@@ -60,6 +81,7 @@ class AddTripFragment : Fragment() {
                 userController.createTrip(this, signedInUserId, tripData.tripTitle, tripData)
             }
         }
+
 
     }
 
@@ -85,7 +107,7 @@ class AddTripFragment : Fragment() {
     }
 
     private fun updateTable(myCalender: Calendar) {
-        val myFormat = "dd-mm-yyyy"
+        val myFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         binding.edtTripDate.setText(sdf.format(myCalender.time))
     }

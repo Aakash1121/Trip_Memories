@@ -5,7 +5,7 @@ import android.os.Parcelable
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter.writeString
 
 data class TripData(
-    var tripPhotosURI:String="",
+    var tripPhotosURI: ArrayList<String> = ArrayList<String>(),
     var tripTitle: String="",
     var tripDescription: String="",
     var tripDate: String="",
@@ -13,7 +13,7 @@ data class TripData(
 
 ): Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
+        parcel.readArrayList(null)!! as ArrayList<String>,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -22,7 +22,7 @@ data class TripData(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) = with(parcel) {
-        writeString(tripPhotosURI)
+        writeList(tripPhotosURI)
         writeString(tripTitle)
         writeString(tripDescription)
         writeString(tripDate)
