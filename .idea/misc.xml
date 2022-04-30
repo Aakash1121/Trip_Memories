@@ -79,8 +79,17 @@
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/home_bottom_menu.xml" value="0.25" />
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/home_menu.xml" value="0.25" />
         <entry key="..\:/Android Apps/TripMemories/app/src/main/res/menu/source.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/drawable-anydpi/ic_baseline_add_24.xml" value="0.1185" />
         <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/dialog_progress.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_add_trip.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_add_trip_list_photos.xml" value="0.20555555555555555" />
         <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_sign_in.xml" value="0.2" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_trip.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_user_settings.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/fragment_user_trips.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/item_add_photos_adapter.xml" value="0.20555555555555555" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/item_photos_adapter.xml" value="0.25" />
+        <entry key="..\:/Android Apps/Trip_Memories/app/src/main/res/layout/item_user_trips_adapter.xml" value="0.25" />
       </map>
     </option>
   </component>

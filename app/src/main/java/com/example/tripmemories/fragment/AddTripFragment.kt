@@ -1,15 +1,19 @@
 package com.example.tripmemories.fragment
 
 import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripmemories.R
+import com.example.tripmemories.adapter.AddTripsAddPhotosAdapter
+import com.example.tripmemories.contracts.AddTripAddPhotosResultContract
 import com.example.tripmemories.controller.UserController
-import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.databinding.FragmentAddTripBinding
 import com.example.tripmemories.model.TripData
 import com.google.android.material.snackbar.Snackbar
@@ -21,18 +25,24 @@ import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AddTripFragment : Fragment(){
+class AddTripFragment : Fragment() {
     lateinit var binding: FragmentAddTripBinding
+
     @Inject
-    lateinit var userController : UserController
+    lateinit var userController: UserController
 
-    var day = 0
-    var month = 0
-    var year = 0
+    var imagesList = ArrayList<Uri>()
+    var contract = registerForActivityResult(AddTripAddPhotosResultContract()) {
 
-    var savedDay = 0
-    var savedMonth = 0
-    var savedYear = 0
+        val count = it.size - 1
+        for (i in 0..count) {
+            imagesList.add(it[i])
+        }
+        binding.rvAddPhotosList.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvAddPhotosList.adapter = AddTripsAddPhotosAdapter(requireActivity(), imagesList)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,12 +52,25 @@ class AddTripFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_trip, container, false)
         datePickerForTrip()
         createTrip()
+        addPhotos()
+        Log.i("DATA", "in onCreate view")
         return binding.root
     }
-    fun createTrip() {
+
+    private fun addPhotos() {
+        binding.btnAddTripPhotos.setOnClickListener {
+            contract.launch("Choose")
+        }
+    }
+
+    private fun createTrip() {
         binding.btnAddTrip.setOnClickListener {
             val tripData = TripData()
-//            tripData.tripPhotosURI=binding.imgTripPhotos.text.toString()
+            val count = imagesList.size - 1
+            for (i in 0..count) {
+                tripData.tripPhotosURI.add(imagesList[i].toString())
+                Log.i("data", "createtrip->${imagesList[i].toString()}")
+            }
             tripData.tripTitle = binding.edtTripTitle.text.toString()
             tripData.tripDescription = binding.edtTripDesc.text.toString()
             tripData.tripDate = binding.edtTripDate.text.toString()
@@ -59,9 +82,10 @@ class AddTripFragment : Fragment(){
             }
         }
 
+
     }
 
-    private fun datePickerForTrip(){
+    private fun datePickerForTrip() {
         val myCalendar = Calendar.getInstance()
 
         val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
@@ -83,7 +107,7 @@ class AddTripFragment : Fragment(){
     }
 
     private fun updateTable(myCalender: Calendar) {
-        val myFormat = "dd-mm-yyyy"
+        val myFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         binding.edtTripDate.setText(sdf.format(myCalender.time))
     }
@@ -93,30 +117,4 @@ class AddTripFragment : Fragment(){
             .setAction("Action", null).show()
     }
 
-//    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-//        savedDay=dayOfMonth
-//        savedMonth=month
-//        savedYear=year
-//
-//    }
-//
-//    fun pickDate() {
-//        val cal = Calendar.getInstance()
-//        day = cal.get(Calendar.DAY_OF_MONTH)
-//        month = cal.get(Calendar.MONTH)
-//        year = cal.get(Calendar.YEAR)
-//
-//        val datePicker = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-//            cal.set(Calendar.YEAR, year)
-//            cal.set(Calendar.MONTH, month)
-//            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-//            binding.edtTripDate.setText( SimpleDateFormat("dd-mm-yyyy", Locale.UK).format(cal.time))
-//        }
-//
-//        binding.txtDateInputLayout.setEndIconOnClickListener {
-//
-//            DatePickerDialog(requireContext(), datePicker, year, month, day).show()
-//        }
-//
-//    }
 }
