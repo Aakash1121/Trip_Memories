@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.tripmemories.R
 import kotlinx.android.synthetic.main.item_add_photos_adapter.view.*
 
-class UserTripPhotosListAdapter(val context: Context, val tripImagesList: ArrayList<Uri>) :
+class UserTripPhotosListAdapter(val context: Context, val tripImagesList: ArrayList<String>) :
     RecyclerView.Adapter<UserTripPhotosListAdapter.ViewHolder>() {
 
     class ViewHolder(val item: View) : RecyclerView.ViewHolder(item)
@@ -28,6 +29,8 @@ class UserTripPhotosListAdapter(val context: Context, val tripImagesList: ArrayL
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.item.addPhotosView.setImageURI(tripImagesList[position])
+        Glide.with(context)
+            .load(tripImagesList[position])
+            .into(holder.item.addPhotosView)
     }
 }

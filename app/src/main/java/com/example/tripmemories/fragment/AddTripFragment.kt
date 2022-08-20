@@ -20,6 +20,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -51,7 +54,9 @@ class AddTripFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_trip, container, false)
         datePickerForTrip()
+
         createTrip()
+
         addPhotos()
         Log.i("DATA", "in onCreate view")
         return binding.root
@@ -64,26 +69,30 @@ class AddTripFragment : Fragment() {
     }
 
     private fun createTrip() {
+
         binding.btnAddTrip.setOnClickListener {
             val tripData = TripData()
             val count = imagesList.size - 1
+
             for (i in 0..count) {
                 tripData.tripPhotosURI.add(imagesList[i].toString())
-                Log.i("data", "createtrip->${imagesList[i].toString()}")
             }
+
+            Log.i("data", "TripImages->${tripData.tripPhotosURI}")
             tripData.tripTitle = binding.edtTripTitle.text.toString()
             tripData.tripDescription = binding.edtTripDesc.text.toString()
             tripData.tripDate = binding.edtTripDate.text.toString()
             tripData.tripPeople = binding.edtAddPeople.text.toString()
 
-            val signedInUserId = Firebase.auth.currentUser?.uid
-            if (signedInUserId != null) {
-                userController.createTrip(this, signedInUserId, tripData.tripTitle, tripData)
+            CoroutineScope(IO).launch {
+                val signedInUserId = Firebase.auth.currentUser?.uid
+                if (signedInUserId != null) {
+                    userController.createTrip(signedInUserId, tripData.tripTitle, tripData)
+                }
             }
         }
-
-
     }
+
 
     private fun datePickerForTrip() {
         val myCalendar = Calendar.getInstance()

@@ -37,19 +37,19 @@ class TripFragment : Fragment() {
         binding.txtTripFragPeople.text = tripPeople
         binding.txtTripFragDate.text = tripDate
 
-        val tripImageList = ArrayList<Uri>()
-
-        val count = imageList!!.size - 1
-        for (i in 0..count) {
-            val imageUri = imageList[i].toUri()
-            tripImageList.add(imageUri)
-            Log.i("data", "createtrip->${tripImageList[i].toString()}")
-        }
+//        val tripImageList = ArrayList<Uri>()
+//
+//        val count = imageList!!.size - 1
+//        for (i in 0..count) {
+//            val imageUri = imageList[i].toUri()
+//            tripImageList.add(imageUri)
+//            Log.i("data", "createtrip->${tripImageList[i].toString()}")
+//        }
 
         binding.rvTripPhotosList.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         binding.rvTripPhotosList.adapter =
-            UserTripPhotosListAdapter(requireActivity(), tripImageList)
+            UserTripPhotosListAdapter(requireActivity(), imageList!!)
 
         return binding.root
     }
