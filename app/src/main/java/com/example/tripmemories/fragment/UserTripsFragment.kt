@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripmemories.R
 import com.example.tripmemories.adapter.UserTripsAdapter
 import com.example.tripmemories.controller.UserController
-import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.databinding.FragmentUserTripsBinding
 import com.example.tripmemories.model.TripData
 import com.google.firebase.auth.ktx.auth
@@ -59,7 +58,8 @@ class UserTripsFragment : BaseFragment() {
     fun tripList(tripList:ArrayList<TripData>){
         hideProgressDialog()
         binding.rvUserTrips.layoutManager=LinearLayoutManager(activity)
-        binding.rvUserTrips.adapter=UserTripsAdapter(requireActivity(),tripList)
+        binding.rvUserTrips.adapter=UserTripsAdapter(requireActivity(),tripList,requireView())
     }
+
 
 }

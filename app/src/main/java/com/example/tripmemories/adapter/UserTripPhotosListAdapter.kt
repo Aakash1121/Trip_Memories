@@ -32,5 +32,6 @@ class UserTripPhotosListAdapter(val context: Context, val tripImagesList: ArrayL
         Glide.with(context)
             .load(tripImagesList[position])
             .into(holder.item.addPhotosView)
+
     }
 }
