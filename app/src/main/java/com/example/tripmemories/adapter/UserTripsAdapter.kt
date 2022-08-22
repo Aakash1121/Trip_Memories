@@ -9,14 +9,21 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tripmemories.R
+import com.example.tripmemories.controller.UserControllerImpl
 import com.example.tripmemories.model.TripData
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.item_user_trips_adapter.view.*
 
 class UserTripsAdapter(
     val context: Context,
     val tripsList: ArrayList<TripData>,
+    val view: View,
 ) :
     RecyclerView.Adapter<UserTripsAdapter.ViewHolder>() {
+
+     var userController= UserControllerImpl()
+
     class ViewHolder(val item: View) : RecyclerView.ViewHolder(item)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,6 +55,13 @@ class UserTripsAdapter(
                 R.id.action_userTripsFragment_to_tripFragment,
                 bundle
             )
+        }
+
+        holder.item.imgDeleteTrip.setOnClickListener {
+            val signedInUserId = Firebase.auth.currentUser?.uid
+            if (signedInUserId != null) {
+                userController.deleteTrip(signedInUserId,tripsList[position].tripTitle, view)
+            }
         }
     }
 

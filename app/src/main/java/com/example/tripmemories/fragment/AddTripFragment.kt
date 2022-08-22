@@ -87,7 +87,7 @@ class AddTripFragment : Fragment() {
             CoroutineScope(IO).launch {
                 val signedInUserId = Firebase.auth.currentUser?.uid
                 if (signedInUserId != null) {
-                    userController.createTrip(signedInUserId, tripData.tripTitle, tripData)
+                    userController.createTrip(requireView(),signedInUserId, tripData.tripTitle, tripData)
                 }
             }
         }
@@ -119,11 +119,6 @@ class AddTripFragment : Fragment() {
         val myFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
         binding.edtTripDate.setText(sdf.format(myCalender.time))
-    }
-
-    fun tripCreatedSuccessFully(tripTitle: String) {
-        Snackbar.make(requireView(), "$tripTitle Added", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show()
     }
 
 }
